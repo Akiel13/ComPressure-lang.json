@@ -3667,7 +3667,7 @@
                  {"who":"nicola", "text":"Nous avons déjà un comparateur, et nous avons une source d'une valeur précise de 50 PSI."}
             ],
             [
-                 {"who":"nicola", "text":"Lorsque l'entrée est 100, nous voulons que la sortie soit 50. Donc je suppose que nous connectons notre générateur 50 à la sortie à l'aide d'une vanne. Et lorsque l'entrée est à 0, nous évacuons la sortie dans l'atmosphère."}
+                 {"who":"nicola", "text":"Lorsque l'entrée est 100, nous voulons que la sortie soit 50. Donc je suppose que nous devons connecter notre générateur 50 à la sortie à l'aide d'une vanne. Et lorsque l'entrée est à 0, nous évacuons la sortie dans l'atmosphère."}
             ],
             [
                  {"who":"nicola", "text":"Cela ressemble à nouveau à notre dispositif de tampon, mais lorsque l'entrée est de 50, nous voulons que la sortie soit de 100. Ainsi, la vanne d'aération de l'atmosphère doit être fermée une fois que nous atteignons 50. Je suppose, au lieu d'utiliser les 100 PSI sur \"+ \" côté de la soupape d'aération, nous pourrions le passer à 50."}
@@ -3688,19 +3688,19 @@
                  {"who":"nicola", "text":"On ouvre une vanne à la valeur de l'entrée Ouest moins l'entrée Sud, on peut alors ouvrir une deuxième vanne au même niveau d'ouverture en recherchant quand la pression entre elles est de 50."}
             ],
             [
-                 {"who":"nicola", "text":"Celui-ci est un peu plus difficile. L'utilisation d'un soustracteur nous donne trop d'oscillations.\n\nLa comparaison de la sortie moins une des entrées à l'autre entrée échoue si la deuxième entrée est 0 et que la vanne est complètement fermée. Mais dans ce cas, nous pouvons utiliser une deuxième paire de vannes pour faire la même comparaison et commuter les entrées. Nous pouvons ensuite utiliser un Amp50 pour nous assurer que la pression entre les quatre valves est de 50 PSI.\n\nCliquez sur les exigences pour un diagramme de cette configuration."}
+                 {"who":"nicola", "text":"Celui-ci est un peu plus difficile. L'utilisation d'un soustracteur nous donne trop d'oscillations.\n\nLa comparaison de la sortie moins une des entrées à l'autre entrée échoue si la deuxième entrée est 0 et que la vanne est complètement fermée. Mais dans ce cas, nous pouvons utiliser une deuxième paire de vannes pour faire la même comparaison. Nous pouvons ensuite utiliser un Amp50 pour nous assurer que la pression entre les quatre valves est de 50 PSI.\n\nCliquez sur les consignes pour un diagramme de cette configuration."}
             ],
             [
                  {"who":"annie", "text":"Lorsque l'entrée Sud est élevée, nous ouvrons notre tuyau de stockage. Nous pouvons utiliser un tampon pour pressuriser la sortie au même niveau que celui que nous avons capturé. Il faut fermer la sortie alors que l'entrée Sud est haute pour ne pas laisser passer la nouvelle pression. Le moyen le plus simple de garantir cela est d'utiliser un seuil de 50 sur les soupapes de distribution et de sortie."}
             ],
             [
-                 {"who":"nicola", "text":"La sortie est la valeur d'un verrou contrôlé par l'entrée Sud. L'entrée du verrou est soit la sortie du verrou plus ou moins l'entrée Ouest. L'entrée Nord sélectionne entre eux. Nous avons un additionneur, un soustracteur et un interrupteur."}
+                 {"who":"nicola", "text":"La sortie est la valeur d'une bascule contrôlée par l'entrée Sud. L'entrée de la bascule est sa sortie plus ou moins l'entrée Ouest. L'entrée Nord sélectionne l'opération. Nous avons un additionneur, un soustracteur et un commutateur."}
             ],
             [
-                 {"who":"nicola", "text":"Pour changer, une oscillation est en fait souhaitable. Les amplificateurs dans une configuration en anneau rendront la dispositif instable et vacilleront de haut en bas."}
+                 {"who":"nicola", "text":"Pour une fois, une oscillation est en fait souhaitable. Des inverseurs dans une configuration en anneau rendront le dispositif instable et vacilleront de haut en bas."}
             ],
             [
-                 {"who":"nicola", "text":"Take a look at our Mul2 design. In this case, instead of using 50, we can use any pressure from the North."}
+                 {"who":"nicola", "text":"Inspirons-nous du dispositif Mul2 ; mais la valeur de 50 est remplacée par la valeur du port Nord."}
             ],
             [
                  {"who":"nicola", "text":"Lorsque l'Ouest est plus haut que le Sud, commencez à ajouter plus de vapeur. Lorsque l'Ouest est plus bas que le Nord, commencez à libérer plus de vapeur."}
@@ -3709,61 +3709,61 @@
                  {"who":"nicola", "text":"Vous pouvez mettre des vannes en série. Ce n'est que si toutes les vannes sont ouvertes que la vapeur s'écoulera."}
             ],
             [
-                 {"who":"nicola", "text":"Ceci n'est pas très différent de notre dispositif de verrou normale, sauf que la sortie et l'impulsion de synchronisation ne sont pas connectées lorsque l'entrée Nord est basse."}
+                 {"who":"nicola", "text":"Ce n'est pas très différent de notre bascule normale, sauf que la sortie et l'impulsion de synchronisation ne sont connectées que quand l'entrée Nord est à haute pression."}
             ],
             [
-                 {"who":"nicola", "text":"Si l'entrée de sélection du Nord est supérieure à 50, nous activons un verrou, sinon nous activons l'autre."}
+                 {"who":"nicola", "text":"Si l'entrée de sélection du Nord est supérieure à 50, nous activons une bascule, sinon nous en activons une autre."}
             ],
             [
-                 {"who":"nicola", "text":"Nous avons besoin de tant de signaux sélectionnés ! Et si on enchaînait une rangée de détecteurs de débit avec entrée vapeur d'un côté et atmosphère de l'autre ? Cela nous donnerait toutes les valeurs dont nous avons besoin pour créer."}
+                 {"who":"nicola", "text":"Nous avons besoin de tant de signaux sélectionnés ! Et si on enchaînait une rangée de détecteurs de débit avec entrée vapeur d'un côté et atmosphère de l'autre ? Cela nous donnerait toutes les valeurs dont nous avons besoin."}
             ],
             [
-                 {"who":"nicola", "text":"Nous pouvons utiliser deux éléments Latch5 et basculer entre eux selon si la sélection est inférieure ou supérieure à 50. Mais alors nous aurions besoin de mettre à l'échelle la sélection de l'une des deux plages (0 - 50, ou 50 - 100) à la plage la dispositif Latch5 prend (0 - 100).\n\nJe suppose que l'élément Zoom est utile après tout, mais dans ce cas, il peut avoir besoin d'être assez puissant. Chaque zoom serait connecté à cinq détecteurs de débit, et il faudra un certain temps pour pressuriser tous ces tuyaux. Pour renforcer un design, nous pourrions simplement le dupliquer."}
+                 {"who":"nicola", "text":"Nous pouvons utiliser deux Bascule5 et alterner entre les deux selon que la sélection est inférieure ou supérieure à 50. Mais alors nous aurions besoin de mettre un intervalle (0 - 50, ou 50 - 100) à l'échelle utilisée par la Bascule5 (0 - 100).\n\nJe suppose que l'élément Zoom est utile après tout, mais dans ce cas, il peut avoir besoin d'être assez puissant. Chaque zoom serait connecté à cinq détecteurs de débit, et il faudra un certain temps pour pressuriser tous ces tuyaux. Pour renforcer un composant, nous pourrions simplement le dupliquer."}
             ],
             [
-                 {"who":"ada", "text":"Cela devrait être aussi simple qu'un comparateur et un commutateur."}
+                 {"who":"ada", "text":"Ceci devrait être aussi simple qu'un comparateur et un commutateur."}
             ],
             [
-                 {"who":"ada", "text":"Est-ce non seulement la même chose que notre composant Min, mais la sélection inverse ?"}
+                 {"who":"ada", "text":"Il suffit de très légèrement modifier le composant Min, non ?"}
             ],
             [
-                 {"who":"charles", "text":"Nous pouvons former une valeur de 90 PSI en utilisant un long tuyau de ventilation. Un comparateur entre cette entrée et la sortie nous dira quand ventiler le récipient. Lorsque la pression de notre comparateur augmente de 0 PSI à 50 PSI, il devrait fermer l'entrée. Une fois qu'il dépasse 50 PSI, il doit ouvrir une vanne pour libérer le contenu du récipient dans l'atmosphère."}
+                 {"who":"charles", "text":"Nous pouvons former une valeur de 90 PSI en utilisant un long tuyau de ventilation. Un comparateur entre cette entrée et la sortie nous dira quand ventiler la conduite. Lorsque la pression de notre comparateur augmente de 0 PSI à 50 PSI, il devrait fermer l'entrée. Une fois qu'il dépasse 50 PSI, il doit ouvrir une vanne pour libérer le contenu du récipient dans l'atmosphère."}
             ],
             [
-                 {"who":"george", "text":"Nous pouvons utiliser un additionneur avec un 10 PSI statique sur une entrée. Utilisez ensuite un bascule pour capturer la nouvelle valeur. Enfin, un fusible dans la boucle réinitialisera le compteur à 0 PSI."}
+                 {"who":"george", "text":"Nous pouvons utiliser un additionneur avec 10 PSI statique sur une entrée. Utilisez ensuite un bascule pour capturer la nouvelle valeur. Enfin, un fusible dans la boucle réinitialisera le compteur à 0 PSI."}
             ],
             [
-                 {"who":"george", "text":"Nous pouvons utiliser la même méthode que nous avons utilisée dans la dispositif Latch10 pour sélectionner entre dix valeurs. Chaque valeur devra être personnalisée et connectée à la sortie lorsqu'elle est sélectionnée. Cela implique plusieurs dispositifs personnalisées."}
+                 {"who":"george", "text":"Nous pouvons utiliser la même méthode que nous avons utilisée dans la Bascule10 pour choisir entre dix valeurs. Chaque valeur devra être personnalisée et connectée à la sortie lorsqu'elle est sélectionnée. Cela implique plusieurs dispositifs personnalisées."}
             ],
             [
-                 {"who":"george", "text":"Nous pouvons connecter notre compteur à la ROM, mais nous devrons d'abord en ajouter 5 à l'aide d'un additionneur."}
+                 {"who":"george", "text":"Nous pouvons connecter notre compteur à la ROM, mais nous devrons d'abord augmenter la pression de 5 PSI à l'aide d'un additionneur."}
             ],
             [
-                 {"who":"nicola", "text":"Si nous formons un anneau de composants Amp50 avec une inversion quelque part, nous pouvons obtenir un battement régulier. Une fois que nous l'avons rapproché, nous pouvons l'ajuster en ajoutant des éléments de tuyau pour le ralentir un peu."}
+                 {"who":"nicola", "text":"Si nous formons un anneau de composants Amp50 avec une inversion quelque part, nous pouvons obtenir un battement régulier. Une fois que nous avons le comportement général, nous pouvons ajuster la fréquence en ajoutant des tuyaux."}
             ],
             [
-                 {"who":"nicola", "text":"Une horloge peut sélectionner entre les deux entrées et de l'autre côté du mur, une horloge synchronisée peut sélectionner entre les sorties. Bien que nous ne devrions pas connecter les deux entrées. Au moment où nous en ouvrons un, le second devrait être scellé. Nous pouvons utiliser un 50 PSI comme référence."}
+                 {"who":"nicola", "text":"Une horloge peut choisir entre les deux entrées et de l'autre côté du mur, une horloge synchronisée peut choisir entre les sorties. Bien que nous ne devrions pas connecter les deux entrées. Au moment où nous en ouvrons une, la seconde doit être scellée. Nous pouvons utiliser 50 PSI comme référence."}
             ],
             [
                  {"who":"annie", "text":"On peut modifier le compteur pour insérer un interrupteur pour choisir entre une nouvelle valeur ou celle incrémentée."}
             ],
             [
-                 {"who":"annie", "text":"Nous avons seulement besoin de retarder les valeurs de 0 PSI et 100 PSI. Une chaîne d'éléments Amp50 retardera l'impulsion, avec quelques réglages mineurs."}
+                 {"who":"annie", "text":"Nous avons seulement besoin de retarder les valeurs de 0 PSI et 100 PSI. Une chaîne d'éléments Amp50 fera l'affaire, avec quelques réglages mineurs."}
             ],
             [
-                 {"who":"annie", "text":"Un élément de retard nous donnera l'impulsion de synchronisation dont nous avons besoin. Une fois que nous voyons l'impulsion retardée, nous pouvons capturer la valeur, mais aussi forcer l'entrée de retard à 0 PSI."}
+                 {"who":"annie", "text":"Un élément de retard nous donnera l'impulsion de synchronisation dont nous avons besoin. Une fois que nous voyons l'impulsion retardée, nous pouvons capturer la valeur avec une bascule, mais aussi forcer ventiler l'entrée de l'élément de délai."}
             ],
             [
-                 {"who":"nicola", "text":"Au lieu de simplement boucher le trou, nous pourrions l'attacher à 100 PSI. Cela faciliterait les choses. Pour fabriquer une clé à vapeur, on peut reproduire les pressions qui se forment à l'intérieur de la serrure."}
+                 {"who":"nicola", "text":"Au lieu de simplement boucher le trou, nous pourrions le connecter à une source de 100 PSI. Cela faciliterait les choses. Pour fabriquer une clé à vapeur, on peut reproduire les pressions qui se forment à l'intérieur de la serrure."}
             ],
             [
-                 {"who":"george", "text":"Nous avons besoin de trois verrous pour retarder suffisamment l'entrée. Un générateur d'horloge avec un délai supplémentaire personnalisé peut les cadencer. Pour détecter si toutes les valeurs sont correctes, un tuyau peut être rempli lentement et si une valeur de verrouillage est supérieure ou inférieure à la valeur recherchée, elle peut ventiler le tuyau."}
+                 {"who":"george", "text":"Nous avons besoin de trois bascules pour retarder suffisamment l'entrée. Une horloge devra gérer la cadence. Pour détecter si toutes les valeurs sont correctes, on peut mettre en place un tuyau qui se remplit lentement, et est ventilé à chaque fois qu'une des valeurs testés est trop petite ou trop grande."}
             ],
             [
-                 {"who":"ada", "text":"Prenez votre temps et comprenez comment fonctionne la machine. Une fois cela fait, vous pouvez améliorer vos dispositifs afin qu'elles améliorent le fonctionnement du Steamputer."}
+                 {"who":"ada", "text":"Prenez votre temps et comprenez comment fonctionne la machine. Une fois cela fait, vous pouvez revenir sur vos précédents dispositifs afin de faire fonctionner l'Ordivapeur."}
             ],
             [
-                 {"who":"ada", "text":"Plus d'indices. Profitez de votre victoire."}
+                 {"who":"ada", "text":"Plus besoin d'indices. Profitez de votre victoire."}
             ]
         ]
     },
